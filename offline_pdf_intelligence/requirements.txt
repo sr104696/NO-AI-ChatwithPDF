@@ -1,0 +1,24 @@
+# Offline PDF Intelligence - Requirements
+# All dependencies installable via pip, fully offline after install
+
+# PDF processing
+PyMuPDF>=1.23.0        # fitz - PDF text extraction and rendering
+
+# BM25 indexing (deterministic, no neural components)
+bm25s>=0.1.0           # Fast BM25 implementation
+
+# TF-IDF similarity search
+scikit-learn>=1.3.0    # For TfidfVectorizer and cosine similarity
+scipy>=1.11.0          # Required by scikit-learn
+
+# GUI (Tkinter is stdlib, CustomTkinter is optional modern look)
+customtkinter>=5.2.0   # Optional: Modern Tkinter widgets
+
+# OCR for scanned PDFs (optional, requires system tesseract-ocr)
+pytesseract>=0.3.10    # Python wrapper for Tesseract OCR
+
+# Image processing for OCR
+Pillow>=9.2.0          # Required for OCR image handling
+
+# Utilities
+numpy>=1.24.0          # Numerical operations
