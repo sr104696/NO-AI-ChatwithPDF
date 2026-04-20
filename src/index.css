@@ -1,0 +1,167 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Lumen — Editorial split-pane design system. All colors are HSL. */
+
+@layer base {
+  :root {
+    /* Parchment reader surface */
+    --background: 39 38% 96%;
+    --foreground: 30 15% 14%;
+
+    --card: 40 40% 98%;
+    --card-foreground: 30 15% 14%;
+
+    --popover: 40 40% 98%;
+    --popover-foreground: 30 15% 14%;
+
+    /* Warm ink primary */
+    --primary: 26 60% 28%;
+    --primary-foreground: 40 40% 98%;
+
+    --secondary: 36 24% 90%;
+    --secondary-foreground: 30 20% 20%;
+
+    --muted: 36 22% 92%;
+    --muted-foreground: 30 10% 38%;
+
+    --accent: 32 70% 52%;
+    --accent-foreground: 40 40% 98%;
+
+    --destructive: 4 70% 48%;
+    --destructive-foreground: 40 40% 98%;
+
+    --border: 34 18% 85%;
+    --input: 34 18% 85%;
+    --ring: 26 60% 28%;
+
+    --radius: 0.5rem;
+
+    /* Highlight tokens — provenance of a match */
+    --highlight-lexical: 210 30% 70%;
+    --highlight-semantic: 178 55% 50%;
+    --highlight-hybrid: 38 92% 60%;
+
+    /* Chat / sidebar — warm dark */
+    --shell: 28 18% 12%;
+    --shell-foreground: 36 30% 92%;
+    --shell-muted: 28 12% 22%;
+    --shell-muted-foreground: 36 16% 70%;
+    --shell-border: 28 14% 22%;
+    --shell-accent: 32 80% 60%;
+
+    /* Sidebar tokens (shadcn) — mapped to shell */
+    --sidebar-background: 28 18% 12%;
+    --sidebar-foreground: 36 30% 92%;
+    --sidebar-primary: 32 80% 60%;
+    --sidebar-primary-foreground: 28 18% 12%;
+    --sidebar-accent: 28 12% 22%;
+    --sidebar-accent-foreground: 36 30% 92%;
+    --sidebar-border: 28 14% 22%;
+    --sidebar-ring: 32 80% 60%;
+  }
+
+  .dark {
+    --background: 28 18% 10%;
+    --foreground: 36 30% 92%;
+    --card: 28 18% 13%;
+    --card-foreground: 36 30% 92%;
+    --popover: 28 18% 13%;
+    --popover-foreground: 36 30% 92%;
+    --primary: 32 80% 60%;
+    --primary-foreground: 28 18% 10%;
+    --secondary: 28 12% 22%;
+    --secondary-foreground: 36 30% 92%;
+    --muted: 28 12% 18%;
+    --muted-foreground: 36 16% 70%;
+    --accent: 32 80% 60%;
+    --accent-foreground: 28 18% 10%;
+    --destructive: 4 70% 48%;
+    --destructive-foreground: 40 40% 98%;
+    --border: 28 14% 22%;
+    --input: 28 14% 22%;
+    --ring: 32 80% 60%;
+    --sidebar-background: 28 18% 8%;
+    --sidebar-foreground: 36 30% 92%;
+    --sidebar-primary: 32 80% 60%;
+    --sidebar-primary-foreground: 28 18% 10%;
+    --sidebar-accent: 28 12% 18%;
+    --sidebar-accent-foreground: 36 30% 92%;
+    --sidebar-border: 28 14% 18%;
+    --sidebar-ring: 32 80% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-feature-settings: "ss01", "cv11";
+  }
+}
+
+@layer utilities {
+  .font-serif {
+    font-family: "Source Serif 4", ui-serif, Georgia, serif;
+  }
+  .font-mono {
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  }
+
+  /* Inline highlight overlays inside the reader */
+  .lumen-hl {
+    background: hsl(var(--highlight-hybrid) / 0.35);
+    box-shadow: inset 0 -2px 0 hsl(var(--highlight-hybrid));
+    border-radius: 2px;
+    padding: 0 1px;
+  }
+  .lumen-hl[data-source="lexical"] {
+    background: hsl(var(--highlight-lexical) / 0.4);
+    box-shadow: inset 0 -2px 0 hsl(var(--highlight-lexical));
+  }
+  .lumen-hl[data-source="semantic"] {
+    background: hsl(var(--highlight-semantic) / 0.35);
+    box-shadow: inset 0 -2px 0 hsl(var(--highlight-semantic));
+  }
+
+  .lumen-chunk-flash {
+    animation: lumen-flash 1.6s ease-out;
+  }
+  @keyframes lumen-flash {
+    0% {
+      background-color: hsl(var(--highlight-hybrid) / 0.5);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  .reader-prose {
+    @apply font-serif text-[1.0625rem] leading-relaxed text-foreground;
+  }
+  .reader-prose h1 {
+    @apply mt-8 mb-3 text-3xl font-semibold tracking-tight;
+  }
+  .reader-prose h2 {
+    @apply mt-6 mb-2 text-2xl font-semibold tracking-tight;
+  }
+  .reader-prose h3 {
+    @apply mt-5 mb-2 text-xl font-semibold tracking-tight;
+  }
+  .reader-prose p {
+    @apply my-3;
+  }
+}
